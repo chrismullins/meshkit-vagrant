@@ -1,0 +1,21 @@
+#---
+#- hosts: all
+#  tasks:
+#    - name: ensure ntpd is at the latest version
+#      yum: pkg=ntp state=latest
+#      notify:
+#      - restart ntpd
+#  handlers:
+#    - name: restart ntpd
+#      service: name=ntpd state=restarted
+---
+- hosts: all
+  tasks:
+    - name: Installs nginx web server
+      apt: pkg=nginx state=installed update_cache=true
+      notify:
+        - start nginx
+
+  handlers:
+    - name: start nginx
+      service: name=nginx state=started
