@@ -1,0 +1,34 @@
+---
+- name: Install git
+  apt: pkg=git update_cache=yes
+
+- name: Install gcc
+  apt: pkg=gcc
+
+- name: Install g++
+  apt: pkg=g++
+
+- name: Install make
+  apt: pkg=make
+
+- name: Install opengl
+  apt: pkg=libglu1-mesa-dev
+
+- name: Install libxmu-dev
+  apt: pkg=libxmu-dev 
+
+- name: Install libxmu-headers
+  apt: pkg=libxmu-headers
+
+- name: Install libcurl
+  apt: pkg=libcurl4-openssl-dev
+
+- name: Install vim so you can edit things
+  apt: pkg=vim
+
+# Get rid of this stuff when you can
+- name: Install autotools
+  apt: pkg=autoconf
+
+- name: Install libtoolize
+  apt: pkg=libtool

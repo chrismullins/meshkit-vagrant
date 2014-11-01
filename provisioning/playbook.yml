@@ -13,9 +13,20 @@
   tasks:
     - name: Installs nginx web server
       apt: pkg=nginx state=installed update_cache=true
+      sudo: yes
       notify:
         - start nginx
 
   handlers:
     - name: start nginx
       service: name=nginx state=started
+      sudo: yes
+
+
+- name: Install essential and specialized software
+  hosts: all
+  sudo: yes
+  tasks:
+    - include: install-essentials.yml
+    - include: install-cmake-3.0.2.yml
+    - include: build-meshkit.yml

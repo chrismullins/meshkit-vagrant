@@ -1,0 +1,25 @@
+---
+- name: Grab meshkit
+  command: >
+    git clone git://github.com/chrismullins/meshkit.git
+    creates=meshkit
+
+- name: Change into the right damn branch
+  command: >
+    git checkout cmake-build-system
+    chdir=meshkit
+
+- name: Create the build directory
+  command: >
+    mkdir meshkit-build
+    creates=meshkit-build
+
+- name: Configure meshkit
+  command: >
+    cmake ../meshkit
+    chdir=meshkit-build
+
+- name: Build meshkit
+  command: >
+    make
+    chdir=meshkit-build
